@@ -5,14 +5,25 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { HogeComponent } from './hoge/hoge.component';
+import { FugaComponent } from './fuga/fuga.component';
+import {AppRoutingModule} from "./app.routing.module";
+
+import * as bootstrap from 'ng2-bootstrap';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HogeComponent,
+    FugaComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    bootstrap.AlertModule.forRoot(),
+    bootstrap.TabsModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
