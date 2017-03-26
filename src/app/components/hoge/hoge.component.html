@@ -1,0 +1,16 @@
+<p>
+  複数系のmodel化サンプル
+</p>
+
+<div class="form-inline" *ngFor="let unit of units">
+  <label class="radio-inline nowrap">
+    <input class="nowrap"
+           type="radio"
+           name="unit"
+           [(ngModel)]="selectedUnit"
+           (change)="onUnitChange()"
+           value="{{unit.value}}">
+    <span>{{unit.display}}</span>
+  </label>
+</div>
+

@@ -5,8 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { HogeComponent } from './hoge/hoge.component';
-import { FugaComponent } from './fuga/fuga.component';
+import { HogeComponent } from './components/hoge/hoge.component';
+import { FugaComponent } from './components/fuga/fuga.component';
+import { TopComponent } from './components/top/top.component';
 import {AppRoutingModule} from "./app.routing.module";
 
 import * as bootstrap from 'ng2-bootstrap';
@@ -15,7 +16,8 @@ import * as bootstrap from 'ng2-bootstrap';
   declarations: [
     AppComponent,
     HogeComponent,
-    FugaComponent
+    FugaComponent,
+    TopComponent
   ],
   imports: [
     AppRoutingModule,

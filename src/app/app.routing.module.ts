@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import {HogeComponent} from "./hoge/hoge.component";
-import {FugaComponent} from "./fuga/fuga.component";
+import {HogeComponent} from "./components/hoge/hoge.component";
+import {FugaComponent} from "./components/fuga/fuga.component";
+import {TopComponent} from "./components/top/top.component";
 
 const appRoutes: Routes = [
   { path: 'hoge', component: HogeComponent },
   { path: 'fuga', component: FugaComponent },
-  { path: '', redirectTo: '/hoge', pathMatch: 'full'},
+  { path: 'top', component: TopComponent },
+  { path: '', redirectTo: '/top', pathMatch: 'full'},
 ];
 
 @NgModule({
