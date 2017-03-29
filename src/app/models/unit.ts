@@ -1,5 +1,5 @@
-export class Units<T> extends Array<T> {
-  public constructor(...args: T[]) {
+export class Units extends Array<Unit>{
+  public constructor(...args: Unit[]) {
     let data: any = super(...args);
     let array = data.map(row => new Unit(row));
 
@@ -10,6 +10,10 @@ export class Units<T> extends Array<T> {
 
   public toJson() {
     return JSON.stringify(this);
+  }
+
+  public getValues(){
+    return this.map( (u: Unit) => u.value);
   }
 }
 

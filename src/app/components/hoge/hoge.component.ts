@@ -7,7 +7,7 @@ import {Units,Unit} from "../../models/unit";
   styleUrls: ['hoge.component.scss']
 })
 export class HogeComponent implements OnInit {
-  private units: Units<Unit>;
+  private units: Units;
 
   constructor() { }
 
@@ -22,7 +22,8 @@ export class HogeComponent implements OnInit {
     ];
     // ].map(r => new Unit(r));
 
-    this.units = new Units<Unit>(...units);
+    this.units = new Units(...units);
+
 
     console.log(this.units.filter(u => u.selected));
 
@@ -33,9 +34,12 @@ export class HogeComponent implements OnInit {
     //   console.log(n);
     // });
     //
+
   }
 
   private onUnitChange(selectedUnit: string){
     console.log("unit changed");
+    let values = this.units.getValues();
+    console.log(values);
   }
 }
