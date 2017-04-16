@@ -8,6 +8,11 @@ import { AppComponent } from './app.component';
 import { HogeComponent } from './components/hoge/hoge.component';
 import { FugaComponent } from './components/fuga/fuga.component';
 import { TopComponent } from './components/top/top.component';
+import {FugaDataComponent} from "./components/fuga/data/data.component";
+import {FugaFormComponent} from "./components/fuga/form/form.component";
+
+import {MessageEventService} from "./service/message-event.service";
+
 import {AppRoutingModule} from "./app.routing.module";
 
 import * as bootstrap from 'ng2-bootstrap';
@@ -17,6 +22,8 @@ import * as bootstrap from 'ng2-bootstrap';
     AppComponent,
     HogeComponent,
     FugaComponent,
+    FugaDataComponent,
+    FugaFormComponent,
     TopComponent
   ],
   imports: [
@@ -27,7 +34,9 @@ import * as bootstrap from 'ng2-bootstrap';
     bootstrap.AlertModule.forRoot(),
     bootstrap.TabsModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    MessageEventService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
