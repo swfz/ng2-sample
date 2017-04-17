@@ -9,7 +9,6 @@ import {AgGridComponent} from "./ag-grid/ag-grid-component";
 export class TabsComponent implements OnInit, AfterViewInit {
 
   private tabs: any;
-  private gridElements: any;
   private currentGrid: AgGridComponent;
   private grids: any;
 
@@ -23,6 +22,8 @@ export class TabsComponent implements OnInit, AfterViewInit {
     console.log("grids");
     console.log(this.grids);
     this.grids.forEach(grid => {
+      console.log("afterView");
+      console.log(grid);
       grid.gridOptions.api.setRowData(grid.rows);
     });
   }
@@ -44,8 +45,9 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
     this.tabs = this.generateSampleTabs();
 
-    console.log(this.tabs);
-    console.log(agGridTabs);
+    this.grids.forEach(grid => {
+      grid.gridOptions.api.setRowData(grid.rows);
+    });
   }
 
   private generateSampleTabs() {
@@ -59,7 +61,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
       });
     });
 
-    sample.push({title: 'Dynamic2', active: false, rows: this.generateSampleRows()});
+    sample.push({title: 'Dynamic2', active: true, rows: this.generateSampleRows()});
 
     return sample;
   }
@@ -82,7 +84,21 @@ export class TabsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  refreshGrid(){
+    console.log(this.currentGrid);
+    let currentGrid = this.grids.find(g => g.gridKey == this.currentGrid.gridKey);
+    currentGrid.gridOptions.api.setRowData(currentGrid.rows);
+  }
+
   removeTabHandler(tabz){
     console.log(tabz);
+  }
+
+  selectTab(tabz) {
+    tabz.active = true;
+    console.log("selectedTab");
+    console.log(tabz);
+    this.currentGrid = this.grids.find(g => g.gridKey == tabz.title);
+    console.log(this.currentGrid);
   }
 }

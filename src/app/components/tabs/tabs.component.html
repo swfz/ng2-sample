@@ -4,14 +4,16 @@
 <button class="btn btn-primary" (click)="dynamicTabTarget('Dynamic2')">
   Dynamic2をリフレッシュ
 </button>
-
+<button class="btn btn-primary" (click)="refreshGrid()">
+  表示中gridをリフレッシュ
+</button>
 
 
 <tabset #agGridTabs>
   <tab *ngFor="let tabz of tabs"
        [heading]="tabz.title"
        [active]="tabz.active"
-       (select)="tabz.active = true"
+       (select)="selectTab(tabz)"
        (deselect)="tabz.active = false"
        [disabled]="tabz.disabled"
        [removable]="tabz.removable"
