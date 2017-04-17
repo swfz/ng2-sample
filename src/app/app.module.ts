@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -19,6 +19,17 @@ import {AppRoutingModule} from "./app.routing.module";
 import * as bootstrap from 'ng2-bootstrap';
 import {AgGridModule} from 'ag-grid-angular/main';
 import {AgGridComponent} from "./components/tabs/ag-grid/ag-grid-component";
+
+import * as Raven from 'raven-js';
+Raven
+  .config('http://a2d8c478d3ea4bf9ba47f197bc548007@192.168.30.14:8080/2')
+  .install();
+
+export class RavenErrorHandler implements ErrorHandler {
+  handleError(err:any) : void {
+    Raven.captureException(err.originalError);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -41,6 +52,7 @@ import {AgGridComponent} from "./components/tabs/ag-grid/ag-grid-component";
     bootstrap.TabsModule.forRoot()
   ],
   providers: [
+    {provide: ErrorHandler, useClass: RavenErrorHandler},
     MessageEventService
   ],
   bootstrap: [AppComponent]

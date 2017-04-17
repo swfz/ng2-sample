@@ -5,6 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
+    "hmr": "ng serve --hmr -e=hmr --host=0.0.0.0",
     "start": "ng serve",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
@@ -26,12 +27,14 @@
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "ng2-bootstrap": "^1.4.2",
+    "raven-js": "^3.14.2",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.7.2"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.3.1",
+    "@angularclass/hmr": "^1.2.2",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.28.3",
