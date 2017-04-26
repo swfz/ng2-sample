@@ -1,14 +1,13 @@
-import {Component, Input, OnChanges, AfterViewInit, SimpleChanges, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, AfterViewInit} from '@angular/core';
 import {GridOptions} from "ag-grid";
 
 @Component({
   selector: 'app-ag-grid',
   templateUrl: './ag-grid.component.html',
-  // styleUrls: ['./ag-grid.component.scss']
 })
 
 
-export class AgGridComponent implements OnChanges, OnInit{
+export class AgGridComponent implements OnDestroy, AfterViewInit{
   private gridOptions: GridOptions;
   @Input() rows: any;
   @Input() gridKey: string;
@@ -36,19 +35,20 @@ export class AgGridComponent implements OnChanges, OnInit{
         field: "data1",
         width: 100
       },
+      {
+        headerName: "time",
+        field: "time",
+        width: 150
+      },
     ];
-    this.gridOptions.rowData = [{name: 'default', data1: 3}];
+    this.gridOptions.rowData = [{name: 'default', data1: 3, time: Date.now}];
   }
 
-  ngOnInit(){
+  ngOnDestroy(){
+    console.log("destroyed5");
+    console.log("hmr");
   }
-
-  ngOnChanges(changes: any){
-    // console.log(changes);
-    // if(this.gridOptions.api){
-    //   if(changes.rows){
-    //     this.gridOptions.api.setRowData(this.rows);
-    //   }
-    // }
+  ngAfterViewInit(){
+    this.gridOptions.api.setRowData(this.rows);
   }
 }

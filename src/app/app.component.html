@@ -1,16 +1,20 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Sample</a>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><a routerLink="/hoge" routerLinkActive="active">Hoge</a></li>
-        <li><a routerLink="/fuga" routerLinkActive="active">Fuga</a></li>
-        <li><a routerLink="/tabs" routerLinkActive="active">Tabs</a></li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/hoge" routerLinkActive="active">Hoge</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/fuga" routerLinkActive="active">Fuga</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tabs" routerLinkActive="active">Tabs</a>
+        </li>
       </ul>
     </div>
-  </div>
 </nav>
 
 <router-outlet></router-outlet>

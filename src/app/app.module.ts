@@ -16,7 +16,7 @@ import {MessageEventService} from "./service/message-event.service";
 
 import {AppRoutingModule} from "./app.routing.module";
 
-import * as bootstrap from 'ng2-bootstrap';
+import * as bootstrap from 'ngx-bootstrap';
 import {AgGridModule} from 'ag-grid-angular/main';
 import {AgGridComponent} from "./components/tabs/ag-grid/ag-grid-component";
 

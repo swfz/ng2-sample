@@ -1,10 +1,9 @@
-import {Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit} from '@angular/core';
+import {Component, OnInit, ViewChildren, QueryList, AfterViewInit} from '@angular/core';
 import {AgGridComponent} from "./ag-grid/ag-grid-component";
 
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.component.html',
-  // styleUrls: ['hoge.component.scss']
 })
 export class TabsComponent implements OnInit, AfterViewInit {
 
@@ -15,17 +14,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   @ViewChildren(AgGridComponent) viewChildren: QueryList<AgGridComponent>;
 
   ngAfterViewInit(){
-    console.log(this.viewChildren);
     this.grids = this.viewChildren;
-
-
-    console.log("grids");
-    console.log(this.grids);
-    this.grids.forEach(grid => {
-      console.log("afterView");
-      console.log(grid);
-      grid.gridOptions.api.setRowData(grid.rows);
-    });
   }
 
   constructor() { }
@@ -51,7 +40,7 @@ export class TabsComponent implements OnInit, AfterViewInit {
   }
 
   private generateSampleTabs() {
-    const titles = ['Title','Hoge','Fuga','Piyo','FOOOOOOOOOOOOOOOOOOOOOOOOOOOO!!!'];
+    const titles = [`Hoge${Math.random()}`,'Fuga','Piyo','FOO!!!'];
     let sample = [];
     titles.forEach(title => {
       sample.push({
@@ -70,25 +59,28 @@ export class TabsComponent implements OnInit, AfterViewInit {
     const persons = ['Bob','Jhon','Mike'];
     let sample = [];
     Array(30).fill(100).forEach(n => {
-      sample.push({name: persons[Math.floor(Math.random() * persons.length)], data1: Math.random() * n})
+      sample.push({
+        name: persons[Math.floor(Math.random() * persons.length)],
+        data1: Math.random() * n,
+        time: Date.now()
+      })
     });
 
     return sample;
   }
 
-  dynamicTabTarget(key){
-    let target = this.grids.find(g => g.gridKey == key);
-    if(target){
-      target.gridOptions.api.setRowData(target.rows);
-      target.gridOptions.api.refreshView();
-    }
-  }
+  // dynamicTabTarget(key){
+  //   let target = this.grids.find(g => g.gridKey == key);
+  //   if(target){
+  //     target.gridOptions.api.setRowData(target.rows);
+  //     target.gridOptions.api.refreshView();
+  //   }
+  // }
 
-  refreshGrid(){
-    console.log(this.currentGrid);
-    let currentGrid = this.grids.find(g => g.gridKey == this.currentGrid.gridKey);
-    currentGrid.gridOptions.api.setRowData(currentGrid.rows);
-  }
+  // refreshGrid(){
+  //   let currentGrid = this.grids.find(g => g.gridKey == this.currentGrid.gridKey);
+  //   currentGrid.gridOptions.api.setRowData(currentGrid.rows);
+  // }
 
   removeTabHandler(tabz){
     console.log(tabz);
@@ -96,9 +88,6 @@ export class TabsComponent implements OnInit, AfterViewInit {
 
   selectTab(tabz) {
     tabz.active = true;
-    console.log("selectedTab");
-    console.log(tabz);
     this.currentGrid = this.grids.find(g => g.gridKey == tabz.title);
-    console.log(this.currentGrid);
   }
 }
