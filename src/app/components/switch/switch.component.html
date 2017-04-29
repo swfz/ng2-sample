@@ -1,0 +1,13 @@
+
+<button (click)="key='foo'" class="btn btn-primary">Foo</button>
+<button (click)="key='bar'" class="btn btn-success">Bar</button>
+
+<ng-container [ngSwitch]="key">
+  <app-foo *ngSwitchCase="'foo'" [params]="fooParams">
+  </app-foo>
+  <app-bar *ngSwitchCase="'bar'" [params]="barParams">
+  </app-bar>
+  <ng-container *ngSwitchDefault>
+    <div>not Selected</div>
+  </ng-container>
+</ng-container>

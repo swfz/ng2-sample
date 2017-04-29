@@ -1,0 +1,20 @@
+<div>Barのレンプレート</div>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>年齢</th>
+        <th>血液型</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of params">
+        <td>{{row.name}}</td>
+        <td>{{row.age}}</td>
+        <td>{{row.bloodType}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

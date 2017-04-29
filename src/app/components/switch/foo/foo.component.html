@@ -1,0 +1,17 @@
+<div>Fooのレンプレート</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th>年齢</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of params">
+        <td>{{row.name}}</td>
+        <td>{{row.age}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

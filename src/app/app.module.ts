@@ -21,6 +21,9 @@ import {AgGridModule} from 'ag-grid-angular/main';
 import {AgGridComponent} from "./components/tabs/ag-grid/ag-grid-component";
 
 import * as Raven from 'raven-js';
+import { SwitchComponent } from './components/switch/switch.component';
+import { FooComponent } from './components/switch/foo/foo.component';
+import { BarComponent } from './components/switch/bar/bar.component';
 Raven
   .config('http://a2d8c478d3ea4bf9ba47f197bc548007@192.168.30.14:8080/2')
   .install();
@@ -40,7 +43,10 @@ export class RavenErrorHandler implements ErrorHandler {
     FugaFormComponent,
     TabsComponent,
     AgGridComponent,
-    TopComponent
+    TopComponent,
+    SwitchComponent,
+    FooComponent,
+    BarComponent
   ],
   imports: [
     AppRoutingModule,
