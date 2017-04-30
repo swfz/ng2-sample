@@ -24,15 +24,16 @@ import * as Raven from 'raven-js';
 import { SwitchComponent } from './components/switch/switch.component';
 import { FooComponent } from './components/switch/foo/foo.component';
 import { BarComponent } from './components/switch/bar/bar.component';
-Raven
-  .config('http://a2d8c478d3ea4bf9ba47f197bc548007@192.168.30.14:8080/2')
-  .install();
+import { DifferComponent } from './components/differ/differ.component';
+// Raven
+//   .config('http://a2d8c478d3ea4bf9ba47f197bc548007@192.168.30.14:8080/2')
+//   .install();
 
-export class RavenErrorHandler implements ErrorHandler {
-  handleError(err:any) : void {
-    Raven.captureException(err.originalError);
-  }
-}
+// export class RavenErrorHandler implements ErrorHandler {
+//   handleError(err:any) : void {
+//     Raven.captureException(err.originalError);
+//   }
+// }
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ export class RavenErrorHandler implements ErrorHandler {
     TopComponent,
     SwitchComponent,
     FooComponent,
-    BarComponent
+    BarComponent,
+    DifferComponent
   ],
   imports: [
     AppRoutingModule,
@@ -58,7 +60,7 @@ export class RavenErrorHandler implements ErrorHandler {
     bootstrap.TabsModule.forRoot()
   ],
   providers: [
-    {provide: ErrorHandler, useClass: RavenErrorHandler},
+    // {provide: ErrorHandler, useClass: RavenErrorHandler},
     MessageEventService
   ],
   bootstrap: [AppComponent]
